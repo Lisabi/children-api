@@ -73,7 +73,8 @@ class ChildrenController extends Controller
         event(new CreateCsvEvent($csvFilename, $query));
 
         $results = $query->orderByDesc('id')->paginate(20);
-        return view('children')->with(compact('results'));
+        return response()->json($results, 200);
+        // return view('children')->with(compact('results'));
     }
 
     public function generateCsvFilename()
